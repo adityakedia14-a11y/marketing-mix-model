@@ -52,7 +52,7 @@ The optimizer uses SciPy (SLSQP). It searches for the split that gives the highe
 
 I checked the model in four ways:
 
-1. **Simulated data.** I kept the brand's real spend patterns, made up "true" ROIs, and generated fake revenue from them. The model recovered all four true ROIs within its 94% intervals. The intervals were wide, though. With two years of weekly data, it can rank channels reliably but can't pin down exact ROI values.
+1. **Simulated data.** I kept the brand's real spend patterns, made up "true" ROIs, and generated fake revenue from them. The model recovered all four true ROIs within its 94% intervals. The intervals were wide, though, and it swapped the top two channels, placing Shopping/PMax above Search when Search was truly higher. With two years of weekly data, it can give a plausible range for each channel, but it can't pin down exact ROI values or reliably rank channels with similar returns.
 2. **Holdout test.** I trained on the first 100 weeks and forecast the last 16, which include Black Friday 2023. The error on those weeks was 23.7% MAPE. It caught the timing of the holiday spike but underestimated how high it went.
 3. **In-sample fit.** R² is 0.84 and MAPE is 15%.
 4. **Sampler checks.** r-hat is about 1.00 with no divergences, which means the four independent chains agree.
